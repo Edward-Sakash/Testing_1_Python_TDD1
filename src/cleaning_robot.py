@@ -1,35 +1,35 @@
-from motor import run
-
-
 class CleaningRobot:
     def __init__(self, testing_mode=False):
         self.testing_mode = testing_mode
 
+    def run_motor(self, command):
+        # Simulate motor running based on the command
+        return f"{command.capitalize()} executed.\n"
+
     def unlock_door(self):
         if not self.testing_mode:
-            run("unlock_door")
-        return "Door unlocked.\n"
+            return self.run_motor("unlock_door")
+        return "Unlock_door executed.\n"
 
     def lock_door(self):
         if not self.testing_mode:
-            run("lock_door")
-        return "Door locked.\n"
+            return self.run_motor("lock_door")
+        return "Lock_door executed.\n"
 
     def enter_door(self):
         if not self.testing_mode:
-            run("enter_door")
-        return "Door entered.\n"
+            return self.run_motor("enter_door")
+        return "Enter_door executed.\n"
 
     def turn_around(self):
         if not self.testing_mode:
-            run("turn_around")
-        return "Turn around.\n"
+            return self.run_motor("turn_around")
+        return "Turn_around executed.\n"
 
     def when_encounter_inner_door(self):
         log = ""
         log += self.unlock_door()
         log += self.enter_door()
-        log += self.lock_door()
         return log
 
     def when_encounter_outer_door(self):
